@@ -68,3 +68,16 @@ public class Marketing {
 	
 
 }
+
+/*
+ * 
+ * 
+ * 
+ * [Marketing [employeename=Steve, productname=Iphone, salesamount=200.0], Marketing [employeename=Jobs, productname=Dell, salesamount=500.0], Marketing [employeename=Abdu, productname=Acer, salesamount=700.0], Marketing [employeename=Lookman, productname=HP, salesamount=9000.0], Marketing [employeename=Bitew, productname=Desktop, salesamount=10000.0], Marketing [employeename=Biakal, productname=Toshiba, salesamount=400.0]]
+[Marketing [employeename=Steve, productname=Iphone, salesamount=200.0], Marketing [employeename=Abdu, productname=Acer, salesamount=700.0], Marketing [employeename=Lookman, productname=HP, salesamount=9000.0], Marketing [employeename=Bitew, productname=Desktop, salesamount=10000.0], Marketing [employeename=Biakal, productname=Toshiba, salesamount=400.0]]
+[Marketing [employeename=AAAA, productname=BBBBB, salesamount=300.0], Marketing [employeename=Abdu, productname=Acer, salesamount=700.0], Marketing [employeename=Lookman, productname=HP, salesamount=9000.0], Marketing [employeename=Bitew, productname=Desktop, salesamount=10000.0], Marketing [employeename=Biakal, productname=Toshiba, salesamount=400.0]]
+5
+[Marketing [employeename=AAAA, productname=BBBBB, salesamount=300.0], Marketing [employeename=Biakal, productname=Toshiba, salesamount=400.0], Marketing [employeename=Abdu, productname=Acer, salesamount=700.0], Marketing [employeename=Lookman, productname=HP, salesamount=9000.0], Marketing [employeename=Bitew, productname=Desktop, salesamount=10000.0]]
+[Marketing [employeename=Lookman, productname=HP, salesamount=9000.0], Marketing [employeename=Bitew, productname=Desktop, salesamount=10000.0]]
+
+ */
