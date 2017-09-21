@@ -36,6 +36,59 @@ public class MyBST {
 			System.out.println(t.element);
 		}	
 	}
+	
+	public boolean contains(Integer key){ 
+		if(key != null)
+		{
+			if(root.element == key)
+			{
+				return true;
+			}
+			printTree( root.left );
+		    printTree( root.right );
+		}	
+		return false;
+	}
+	
+	public Integer getRoot(){//implement 
+		
+		return root.element;
+	}
+	
+	public Integer[] leafNodes(){
+		return leafNodes(root);
+		} 
+	
+	private Integer[] leafNodes(BinaryNode t){
+		
+		return null;
+	}
+	
+	int size = 0;
+	
+	public int size(){//implement 
+		if()
+		printTree( root.left );
+	    printTree( root.right );
+	}
+	
+	public boolean isEmpty(){
+		 return root == null;
+	}
+	
+	public Integer findMin(){
+		 return findMin(root);
+		}
+		private Integer findMin(){
+			}
+		}
+	
+	public Integer findMax(){
+		 return findMax(root);
+		}
+		public Integer findMax(){
+			
+		}
 
 	
 	/**
