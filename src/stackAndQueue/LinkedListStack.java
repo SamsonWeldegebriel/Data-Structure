@@ -117,3 +117,15 @@ public class LinkedListStack implements Stack2 {
 	}
 
 }
+
+/*
+ * Output:
+ * 
+size(): 4
+4 is deleted
+E is deleted
+G is on top of stack
+Size of the Stack : 5
+
+ * 
+ */
