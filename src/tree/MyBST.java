@@ -317,3 +317,16 @@ public class MyBST {
 			
 	}
 }
+
+/* Out put is: 
+1,2,3,9,12,15,16,19,22,25,56,100,Inorder
+15,12,9,1,3,2,56,16,19,22,25,100,Preorder
+2,3,1,9,12,25,22,19,16,100,56,15,Postorder
+The tree contains 3? true
+The Root is: 15
+Leaf nodes are: 3
+Size is:12
+The tree is empty: false
+The Minimum is: 1
+The Maximum is: 100
+*/
