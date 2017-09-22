@@ -1,5 +1,6 @@
 package tree;
 
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.TreeMap;
 import java.util.TreeSet;
@@ -7,46 +8,69 @@ import java.util.TreeSet;
 public class MyBST {
 	/** The tree root. */
 	private BinaryNode root;
+	int min;
+	int max;
+	int size = 0;
+	int NumLeafs = 0;
 
 	public MyBST() {
 		root = null;
 	}
 	
-	public void preOrder(){		
-		preOrderPrint(root); 			
+	public void preOrder(){	
+		
+		if(root == null)
+			System.out.println("The root is empty!");
+		else
+			preOrder(root); 			
 }
 	
-	private void preOrderPrint(BinaryNode t){
+	private void preOrder(BinaryNode t){
 		if(t != null)
 		{
-			System.out.println(t.element);
-			preOrderPrint(root.left);
-			preOrderPrint(root.right);			
+			System.out.print(t.element+",");
+			preOrder(t.left);
+			preOrder(t.right);			
 		}				
 	}
 	
 	public void postOrder(){
+		if(root == null)
+			System.out.println("The root is empty!");
+		else
 			postOrder(root);
 	}
 	private void postOrder(BinaryNode t){  
 		if(t != null)
 		{
-			preOrderPrint(root.left);
-			preOrderPrint(root.right);
-			System.out.println(t.element);
+			postOrder(t.left);
+			postOrder(t.right);
+			System.out.print(t.element+",");
 		}	
 	}
 	
 	public boolean contains(Integer key){ 
-		if(key != null)
+		if(key == null)
 		{
-			if(root.element == key)
+			return false;
+		}
+		else
+			return contains(key, root);
+	}
+	
+	public boolean contains(Integer key, BinaryNode t)
+	{
+		if(t != null)
+		{
+			if(t.element.intValue() == key.intValue())
 			{
 				return true;
 			}
-			printTree( root.left );
-		    printTree( root.right );
-		}	
+				
+			
+			if(contains(key, t.left)) return true;
+			if(contains(key, t.right)) return true;
+		}
 		return false;
 	}
 	
@@ -55,40 +79,98 @@ public class MyBST {
 		return root.element;
 	}
 	
-	public Integer[] leafNodes(){
-		return leafNodes(root);
+	public Integer leafNodes(){
+		if(root == null)
+		{
+			System.out.println("It is empty!");
+			return 0;
+		}
+		else
+			return leafNodes(root);
 		} 
 	
-	private Integer[] leafNodes(BinaryNode t){
+	private Integer leafNodes(BinaryNode t){		
 		
-		return null;
+		if(t != null)
+		{
+			if(t.left == null && t.right == null)
+				NumLeafs++;
+			leafNodes(t.left);
+			leafNodes(t.right);
+		}
+		
+		return NumLeafs;
 	}
 	
-	int size = 0;
 	
-	public int size(){//implement 
-		if()
-		printTree( root.left );
-	    printTree( root.right );
+	
+	public int size(){	        
+	    if( root == null )
+	    	return 0;
+		else
+			return size(root);
 	}
 	
-	public boolean isEmpty(){
-		 return root == null;
+	
+	
+	public int size(BinaryNode t){
+		if(t != null)
+		{
+			size++;
+			size(t.left);
+			size(t.right);
+		}
+		return size;
 	}
 	
+	public boolean isEmpty(){		
+		return(size() == 0);
+	}
+	
+
 	public Integer findMin(){
-		 return findMin(root);
+		if(root != null)
+		{
+			min = root.element;
+			return findMin(root);
 		}
-		private Integer findMin(){
+		else
+			return null;
+		}
+		private Integer findMin(BinaryNode t){
+			if(t != null)
+			{
+				if(t.element < min)
+					min = t.element;
+				
+				findMin(t.left);
+				findMin(t.right);
 			}
+			return min;
 		}
+		
 	
 	public Integer findMax(){
-		 return findMax(root);
+		if(root != null)
+		{
+			max = root.element;
+			return findMax(root);
 		}
-		public Integer findMax(){
+		else
+			return null;
+	}
+		
+	private Integer findMax(BinaryNode t){			
+		if(t != null)
+		{
+			if(t.element > max)
+				max = t.element;
 			
+			findMax(t.left);
+			findMax(t.right);
 		}
+		return max;
+	}
 
 	
 	/**
@@ -115,6 +197,7 @@ public class MyBST {
 	public void insert(Integer x) {
 		if (root == null) {
 			root = new BinaryNode(x);
+			
 			return;
 		}
 		else { 
@@ -123,11 +206,15 @@ public class MyBST {
 
 			while(!inserted)//true
 				{
+				
 				if(x.compareTo(n.element)<0) {
+					
 					//space found on the left
 					if(n.left == null){
 						n.left = new BinaryNode(x,null,null);
 						inserted = true;
+						
+						
 					}
 					//keep looking for a place to insert (a null)
 					else {
@@ -135,10 +222,12 @@ public class MyBST {
 					}
 				}				
 				else if(x.compareTo(n.element)>0){ 
+					
 					//space found on the right					
 					if(n.right==null){
 					n.right = new BinaryNode(x,null,null);
 					inserted = true;
+					
 					}
 						//keep looking for a place to insert (a null)
 					else {
@@ -149,6 +238,7 @@ public class MyBST {
 				// if a node already exists
 				else {
 					inserted = true;
+					
 				}
 
 			}
@@ -180,7 +270,7 @@ public class MyBST {
 		MyBST mybst = new MyBST();
 		
 		int [] a = {15, 12, 9, 56, 1, 16, 19, 22, 3, 100, 2, 25};
-	
+			
 		for (int j = 0; j < a.length; j++ ) {
 			mybst.insert(a[j]);
 					
@@ -188,6 +278,21 @@ public class MyBST {
 		mybst.insert(12);
 		mybst.printTree();
 		
+		System.out.println("Inorder");
+		mybst.preOrder(); //The preorder is 15 12 9 1  3 2 56 16  19  22  25   100  
+		System.out.println("Preorder");
+		mybst.postOrder();//The postorder is 2  3 1  9  12 25 22 19 16   100 56 15
+		System.out.println("Postorder");
+		
+		System.out.println("The tree contains 3? "+ mybst.contains(3));
+		System.out.println("The Root is: " + mybst.getRoot());
+		System.out.println("Leaf nodes are: " + mybst.leafNodes());
+		
+		System.out.println("Size is:" + mybst.size());
+		System.out.println("The tree is empty: " + mybst.isEmpty());
+		System.out.println("The Minimum is: " + mybst.findMin());
+		System.out.println("The Maximum is: " + mybst.findMax());
+		/*
 		TreeSet<Integer> ts = new TreeSet<Integer>();
 		
 		for (int j = 0; j < a.length; j++ ) {
@@ -208,7 +313,7 @@ public class MyBST {
 		map.put(11, "Welcome");
 		map.remove(8);
 		String str = map.get(11)+", "+ map.get(10);
-		System.out.println(str);
+		System.out.println(str); */
 			
 	}
 }
